@@ -48,35 +48,40 @@ var gameState = {
         }
         return false;
     },
-    display: function(){
-
+    display: function(g){
+        document.getElementById("wins-losses").innerHTML = "Wins: "+this.wins+" Losses: "+this.losses;
+        document.getElementById("numberOfGuesses").innerHTML = "Remaining Guesses: "+this.guesses;
+        document.getElementById("passedGuesses").innerHTML = "Already Guessed: "+this.alreadyGuessed;
+        document.getElementById("wordBlank").innerHTML = this.guessStr;
+        document.getElementById("input").innerHTML = "Player Guess: "+g;
     },
     reset: function(){
         this.chooseBreed();
         this.guessStr = [];
         this.alreadyGuessed = [];
         this.guesses = 5;
+        this.buildGuess();
     }
 }
 // divs
 // instructions
-// wins
-// losses
+// wins-losses
 // numberOfGuesses
 // passedGuesses
 // wordBlank
 // input
 
-gameState.chooseBreed();
-gameState.buildGuess();
-gameState.checkGuess("e");
-document.getElementById("wordBlank").innerHTML = gameState.getBreed() +" "+gameState.guessStr;
+gameState.reset();
+gameState.display("");
 
-
-// window.onkeyup = function(event){
-//     var key = event.key;
-//     document.getElementById("input").innerHTML = key;
-// }
+window.onkeyup = function(event){
+    var key = event.key;
+    gameState.checkGuess(key);
+    if(gameState.checkWin()){
+        gameState.reset();
+    }
+    gameState.display(key);
+}
 
 
 
