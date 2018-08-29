@@ -3,7 +3,8 @@ var gameState = {
     alreadyGuessed: [],
     wins: 0,
     losses: 0,
-    breedList: ["labrador retriever", "yorkshire terrier", "german shepherd", "golden retriever", "beagle", "dachshund", "boxer", "Poodle",	"Shih Tzu", "Miniature Schnauzer"],
+    breedList: ["labrador retriever", "yorkshire terrier", "german shepherd", "golden retriever", "beagle", "dachshund", "boxer", "poodle",	"shih tzu", "miniature schnauzer"],
+    acceptedInput: "abcdefghijklmnopqrstuvwxyz",
     breed: 0,
     guessStr: [],
     chooseBreed: function(){
@@ -76,11 +77,16 @@ gameState.display("");
 
 window.onkeyup = function(event){
     var key = event.key;
-    gameState.checkGuess(key);
-    if(gameState.checkWin()){
-        gameState.reset();
+    if(gameState.acceptedInput.includes(key)){
+        gameState.checkGuess(key);
+        if(gameState.checkWin()){
+            alert(gameState.getBreed());
+            gameState.reset();
+        }
+        gameState.display(key);
+    }else{
+        gameState.display("Type a letter key!");
     }
-    gameState.display(key);
 }
 
 
