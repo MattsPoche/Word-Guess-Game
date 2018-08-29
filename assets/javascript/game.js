@@ -1,1 +1,82 @@
-ECHO is on.
+var gameState = {
+    guesses: 5,
+    alreadyGuessed: [],
+    wins: 0,
+    losses: 0,
+    breedList: ["labrador retriever", "yorkshire terrier", "german shepherd", "golden retriever", "beagle", "dachshund", "boxer", "Poodle",	"Shih Tzu", "Miniature Schnauzer"],
+    breed: 0,
+    guessStr: [],
+    chooseBreed: function(){
+        this.breed = Math.floor(Math.random() * this.breedList.length);
+    },
+    getBreed: function(){
+        return this.breedList[this.breed];
+    },
+    buildGuess: function(){
+        var thisbreed = this.getBreed();
+        for(var i = 0; i < thisbreed.length; i++){
+            var letter = thisbreed.charAt(i);
+            if(letter === " "){
+                this.guessStr.push(" ");
+            }else{
+                this.guessStr.push("_");
+            }
+        }
+    },
+    checkGuess: function(g){
+        var correct = false;
+        for(var i = 0; i < this.getBreed().length; i++){
+            if(g === this.getBreed().charAt(i)){
+                this.guessStr[i] = g;
+                correct = true;
+            }
+        }
+        this.alreadyGuessed.push(g);
+        if(!correct){
+            this.guesses--;
+        }
+    },
+    checkWin: function(){
+        if(!this.guessStr.includes("_")){
+            this.wins++;
+            return true;
+        }else{
+            if(this.guessStr.includes("_") && this.guesses <= 0){
+                this.losses++;
+                return true;
+            }
+        }
+        return false;
+    },
+    display: function(){
+
+    },
+    reset: function(){
+        this.chooseBreed();
+        this.guessStr = [];
+        this.alreadyGuessed = [];
+        this.guesses = 5;
+    }
+}
+// divs
+// instructions
+// wins
+// losses
+// numberOfGuesses
+// passedGuesses
+// wordBlank
+// input
+
+gameState.chooseBreed();
+gameState.buildGuess();
+gameState.checkGuess("e");
+document.getElementById("wordBlank").innerHTML = gameState.getBreed() +" "+gameState.guessStr;
+
+
+// window.onkeyup = function(event){
+//     var key = event.key;
+//     document.getElementById("input").innerHTML = key;
+// }
+
+
+
