@@ -8,20 +8,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container background-light">
+    <div class="container bg-light shadow-sm">
         <div class="container d-flex justify-content-center">
             <h1>Word Guess Game</h1>
             <img src="assets/images/PawPrint.png" class="img-fluid" style="max-width:30px; max-height:30px;" alt="PawPrint">
         </div>
-        <div class="container d-flex justify-content-center"><div id="instructions"><h3>Try to guess the popular dog breed by typing a letter</h3></div></div>
         
-        <div class="container border shadow-sm" style="font-family: 'Courier New', Courier, monospace; font-size:22px">
-            <div class="row border">
+        <div class="container" style="font-family: 'Courier New', Courier, monospace; font-size:20px">
+            <div class="row">
+                <div class="col">
+                    <div id="instructions">Try to guess the popular dog breed by typing a letter</div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col">
                     <div id="wins-losses"></div>
                 </div>
             </div>
-            <div class="row border">
+            <div class="row">
                 <div class="col">
                     <div id="numberOfGuesses"></div>
                 </div>
@@ -29,12 +33,15 @@
                     <div id="passedGuesses"></div>
                 </div>
             </div>
-            <div class="row border">
+            <div class="row">
                 <div class="col">
                     <div id="wordBlank"></div>
                 </div>
+                <div class="col">
+                    <div id="answer"></div>
+                </div>
             </div>
-            <div class="row border">
+            <div class="row">
                 <div class="col">
                     <div id="input"></div>
                 </div>

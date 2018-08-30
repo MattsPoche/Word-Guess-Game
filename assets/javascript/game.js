@@ -80,7 +80,7 @@ window.onkeyup = function(event){
     if(gameState.acceptedInput.includes(key)){
         gameState.checkGuess(key);
         if(gameState.checkWin()){
-            alert(gameState.getBreed());
+            document.getElementById("answer").innerHTML = "Previous answer: "+gameState.getBreed();
             gameState.reset();
         }
         gameState.display(key);
